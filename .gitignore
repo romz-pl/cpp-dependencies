@@ -49,3 +49,6 @@ Testing
 MSVC/x64/Debug/
 MSVC/*.opendb
 build
+
+CMakeLists.txt.user
+

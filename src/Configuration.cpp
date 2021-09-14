@@ -16,8 +16,8 @@
 
 #include "Configuration.h"
 #include "Constants.h"
-#include "FstreamInclude.h"
 #include <iostream>
+#include <fstream>
 #include <stdlib.h>
 
 static inline std::string Trim(const std::string &s) {

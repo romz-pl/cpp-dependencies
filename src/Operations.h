@@ -5,8 +5,6 @@
 #include "Component.h"
 #include "Configuration.h"
 #include "Constants.h"
-#include "FilesystemInclude.h"
-#include "FstreamInclude.h"
 #include "Input.h"
 #include "Output.h"
 
@@ -63,7 +61,7 @@ private:
     std::unordered_map<std::string, std::string> includeLookup;
     std::map<std::string, std::vector<std::string>> ambiguous;
     std::set<std::string> deleteComponents;
-    filesystem::path outputRoot, projectRoot;
+    std::filesystem::path outputRoot, projectRoot;
     bool recursive;
 };
 

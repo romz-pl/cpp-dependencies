@@ -1,5 +1,6 @@
 #include "Operations.h"
 
+#include <fstream>
 
 static bool CheckVersionFile(const Configuration& config) {
     const std::string currentVersion = CURRENT_VERSION;
@@ -25,12 +26,12 @@ Operations::Operations(int argc, const char** argv)
     , allArgs(argv+1, argv+argc)
     , recursive(false)
 {
-	if (filesystem::is_regular_file(CONFIG_FILE)) {
-		streams::ifstream in(CONFIG_FILE);
+	if (std::filesystem::is_regular_file(CONFIG_FILE)) {
+		std::ifstream in(CONFIG_FILE);
 		config.read(in);
 	}
 	RegisterCommands();
-	projectRoot = outputRoot = filesystem::current_path();
+	projectRoot = outputRoot = std::filesystem::current_path();
 }
     
 void Operations::RunCommands() {
@@ -305,7 +306,7 @@ void Operations::IncludeOrigin(std::vector<std::string> args) {
 
 void Operations::DoActualRegen(std::vector<std::string> args, bool dryRun) {
 	LoadProject();
-	filesystem::current_path(projectRoot);
+	std::filesystem::current_path(projectRoot);
 	if (args.empty()) {
 		for (auto &c : components) {
 			RegenerateCmakeFilesForComponent(config, c.second, dryRun, false);

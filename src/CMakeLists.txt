@@ -40,6 +40,8 @@ target_include_directories(cpp_dependencies_lib
 
 add_executable(cpp-dependencies
   main.cpp
+  Operations.cpp
+  Operations.h
 )
 
 target_compile_features(cpp-dependencies PRIVATE cxx_range_for)

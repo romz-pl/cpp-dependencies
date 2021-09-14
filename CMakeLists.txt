@@ -10,16 +10,6 @@ include(CTest)
 option(BUILD_COVERAGE "Build cpp_dependencies for coverage" OFF)
 
 if (WIN32)
-  set(DEFAULT_BOOST OFF)
-else()
-  set(DEFAULT_BOOST ON)
-endif()
-
-# Running with Boost filesystem is typically faster, until platform specific std::filesystem comes out that is faster yet. 
-# Note that Boost::filesystem needs to be installed for this to be used.
-option(WITH_BOOST "Use Boost filesystem" ${DEFAULT_BOOST})
-
-if (WIN32)
   set(DEFAULT_MMAP OFF)
 else()
   set(DEFAULT_MMAP ON)
@@ -59,8 +49,6 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES GNU)
   endif()
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   set(COMPILE_FLAGS /W4)
-  # boost gets compiled as static libs on Windows
-  set(Boost_USE_STATIC_LIBS ON)
 endif()
 
 if(WITH_MMAP)
@@ -69,16 +57,6 @@ endif()
 
 if(NOT HAS_MEMRCHR)
   list(APPEND COMPILE_FLAGS -DNO_MEMRCHR)
-endif()
-
-if(WITH_BOOST)
-  list(APPEND COMPILE_FLAGS -DWITH_BOOST)
-  find_package(Boost COMPONENTS filesystem system REQUIRED)
-  set(FILESYSTEM_LIBS ${Boost_LIBRARIES})
-else()
-  if(NOT WIN32)
-    set(FILESYSTEM_LIBS stdc++fs)
-  endif()
 endif()
 
 add_subdirectory(src)

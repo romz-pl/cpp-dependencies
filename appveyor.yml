@@ -1,0 +1,18 @@
+version: 1.0.{build}
+
+configuration: Release
+
+before_build:
+  - cmake -H. -Bbuild
+
+build:
+  parallel: true
+  project: build\PACKAGE.vcxproj
+  verbosity: minimal
+
+test_script:
+  - cd build
+  - ctest -C %configuration% --output-on-failure
+
+artifacts:
+  - path: build\cpp-dependencies*.exe

@@ -10,7 +10,7 @@
 [![Snap store badge](https://camo.githubusercontent.com/353bcf397acd2a7663c45bc69cd2b202417a66c24d3b38f861f9cc0fe1a25324/68747470733a2f2f736e617063726166742e696f2f7374617469632f696d616765732f6261646765732f656e2f736e61702d73746f72652d77686974652e737667)](https://snapcraft.io/cpp-dependencies)
 -->
 
-This is the refactored version of the project `cpp-dependencies` taken from GitHub repository of [TomTom International BV](https://github.com/tomtom-international/cpp-dependencies) 
+This is the refactored version of the project [cpp-dependencies](https://github.com/tomtom-international/cpp-dependencies) taken from GitHub repository of TomTom International BV.
 ----
 
 The tool `cpp-dependencies` creates `#include` dependency information for C++ source

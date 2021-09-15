@@ -17,46 +17,15 @@
 #ifndef __DEP_CHECKER__COMPONENT_H
 #define __DEP_CHECKER__COMPONENT_H
 
-
+#include "File.h"
 #include <algorithm>
 #include <iostream>
-#include <filesystem>
-#include <map>
 #include <regex>
 #include <set>
 #include <stdio.h>
 #include <string>
 #include <unordered_map>
-#include <unordered_set>
 #include <vector>
-
-// Forward reference:
-struct Component;
-
-struct File {
-    File(const std::filesystem::path& path)
-    : path(path)
-    , component(NULL)
-    , loc(0)
-    , includeCount(0)
-    , hasExternalInclude(false)
-    , hasInclude(false)
-    {
-    }
-
-    void AddIncludeStmt(bool withPointyBrackets, const std::string& filename) {
-        rawIncludes.insert(std::make_pair(filename, withPointyBrackets));
-    }
-    std::filesystem::path path;
-    std::map<std::string, bool> rawIncludes;
-    std::unordered_set<File *> dependencies;
-    std::unordered_set<std::string> includePaths;
-    Component *component;
-    size_t loc;
-    size_t includeCount;
-    bool hasExternalInclude;
-    bool hasInclude;
-};
 
 struct Component {
     std::string NiceName(char sub) const;

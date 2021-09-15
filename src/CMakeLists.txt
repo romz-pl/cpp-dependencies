@@ -5,6 +5,7 @@ add_library(cpp_dependencies_lib STATIC
   Component.h
   Configuration.h
   Constants.h
+  File.h
   Input.h
   Output.h
 
@@ -13,6 +14,7 @@ add_library(cpp_dependencies_lib STATIC
   Component.cpp
   Configuration.cpp
   generated.cpp
+  File.cpp
   Input.cpp
   Output.cpp
 )

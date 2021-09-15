@@ -1,11 +1,3 @@
-# MSVC understands neither --coverage nor -O3 flag
-if (NOT MSVC)
-  if(BUILD_COVERAGE)
-    list(APPEND COMPILE_FLAGS --coverage)
-  else()
-    list(APPEND COMPILE_FLAGS -O3)
-  endif()
-endif()
 
 add_library(cpp_dependencies_lib STATIC
   Analysis.h
